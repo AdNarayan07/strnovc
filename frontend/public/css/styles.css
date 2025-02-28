@@ -1,0 +1,327 @@
+/* Reset basic margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+
+/* Fullscreen interactive cover */
+#interact {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  font-size: 64px;
+  font-weight: bold;
+}
+
+/* Main content container */
+#main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  z-index: 0;
+  transition: background-color 0.3s ease;
+}
+
+#video-player {
+  border-radius: 10px;
+  z-index: 3;
+  position: relative;
+}
+
+#bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  border-radius: 10px;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+}
+
+#video-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#sticky {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 100;
+  padding: 10px;
+  background-color: #e7e2e2;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #888d;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+
+}
+
+#sticky div {
+  margin-top: 10px;
+}
+
+label {
+  border-radius: 5px;
+  margin: 6px;
+}
+
+#socketid {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+  padding: 4px 20px;
+  border-radius: 5px;
+  background-color: rgb(112, 112, 112);
+}
+
+#ambience, input[type="file"]::before {
+  cursor: pointer;
+  font: inherit;
+  padding: 4px 20px;
+  width: 80px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+
+input[type="file"]::before {
+  content: 'Choose File';
+  display: inline-block;
+  background-color: buttonface;
+  color: buttontext;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+::-webkit-file-upload-button {
+  display: none;
+}
+
+#layer {
+  box-shadow: inset 0 0 100px 40px white;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+#playerInfo {
+  position: absolute;
+  bottom: 0;
+  padding: 250px 2.5% 20px 2.5%;
+  width: 100%;
+  z-index: 3;
+  background-image: linear-gradient(to top, white, transparent);
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+  pointer-events: none;
+}
+
+.buttons svg {
+  fill: black
+}
+
+#progress,
+#controls {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+#controls {
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 50%;
+}
+
+.buttons > button {
+  height: 36px;
+  width: 36px;
+  padding: 2px;
+  margin: 0 0 0 4px;
+  border: none;
+  cursor: pointer;
+  background: none;
+  pointer-events: all;
+}
+
+button > svg,
+[type="button"],
+[type="submit"],
+#adminFieldButton,
+input[type="file"]::before {
+  transition: transform 150ms ease-in-out;
+}
+
+button:hover > svg,
+[type="button"]:hover,
+[type="submit"]:hover,
+#adminFieldButton:hover,
+input[type="file"]:hover::before {
+  transform: scale(1.1);
+}
+
+button:active > svg,
+[type="button"]:active,
+[type="submit"]:active,
+#adminFieldButton:active,
+input[type="file"]:active::before {
+  transform: scale(0.9);
+}
+
+/********** Range Input Styles **********/
+/*Range Reset*/
+input[type="range"],
+#progressBarBg {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 0.4rem;
+  pointer-events: all;
+}
+
+#progressBar,
+#progressBarBg {
+  position: absolute;
+  width: 95%;
+}
+
+#volume {
+  width: 200px;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#progressBarBg {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0)
+  );
+  background-size: cover;
+}
+
+/* Removes default focus */
+#volume:focus {
+  outline: none;
+}
+
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+
+#volume::-webkit-slider-runnable-track {
+  height: 5px;
+}
+#volume::-webkit-slider-thumb {
+  margin-top: -5px;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+
+  /*custom styles*/
+  background-color: #5cd5eb;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+#volume:focus::-webkit-slider-thumb {
+  border: 1px solid #053a5f;
+  outline: 3px solid #053a5f;
+  outline-offset: 0.125rem;
+}
+
+/******** Firefox styles ********/
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+
+  /*custom styles*/
+  background-color: #5cd5eb;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+#volume:focus::-moz-range-thumb {
+  border: 1px solid #053a5f;
+  outline: 3px solid #053a5f;
+  outline-offset: 0.125rem;
+}
+
+/* Dark mode styling */
+@media (prefers-color-scheme: dark) {
+  .buttons > button {
+    color: whitesmoke;
+  }
+
+  body {
+    background-color: #121212;
+    color: whitesmoke;
+  }
+
+  #interact {
+    background-color: rgba(50, 50, 50, 0.9);
+  }
+
+  #main {
+    background-color: #121212;
+  }
+
+  #playerInfo {
+    background-image: linear-gradient(to top, black, transparent);
+  }
+
+  #sticky {
+    background-color: #030315;
+  }
+
+  #layer {
+    box-shadow: inset 0 0 100px 40px #121212;
+  }
+
+  .buttons svg {
+    fill: white
+  }
+}

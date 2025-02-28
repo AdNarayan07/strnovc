@@ -1,0 +1,80 @@
+#adminFields{
+    position: absolute;
+    top: 0;
+    left: 0;
+    translate: -99.9% 0;
+    background-color: #211f29;
+    transition: translate 300ms ease-in-out;
+    z-index: 5;
+    height: 100vh;
+    max-width: 90vw;
+    overflow: auto;
+    padding: 10px;
+}
+
+#adminFields Button, #adminFields [type="submit"] {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#adminFields form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    background-color: black;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+#adminFields form > input {
+    margin-bottom: 10px;
+}
+
+#adminFieldButton{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+#video-list {
+    width: max-content;
+}
+
+#video-list > li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#video-list > li > a {
+    font: inherit;
+    color: inherit;
+}
+
+#video-list > li > a > div, #adminFields [type="text"] {
+    border: none;
+    background-color: #303030;
+    width: 500px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+#video-list > li > a > div:hover {
+    background-color: #fff4;
+}
+
+progress {
+    display: none;
+}
